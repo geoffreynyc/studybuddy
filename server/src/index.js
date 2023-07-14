@@ -1,12 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import Flashcard from "./models/Flashcard.js";
+import dotenv from "dotenv";
 const app = express();
 const PORT = 5000;
+dotenv.config();
 
-// app.get("/flashcard", (req, res) => {
-//   res.send("express server");
-// });
+app.get("/flashcard", (req, res) => {
+  res.send("express server");
+});
 
 app.use(express.json());
 
@@ -18,11 +20,7 @@ app.post("/flashcard", async (req, res) => {
   res.json(createdFlashcard);
 });
 
-mongoose
-  .connect(
-    "mongodb+srv://studybuddy:kLW95dSvwybf2u9J@studybuddy.vldikcq.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log(`listening on port ${PORT}`);
-    app.listen(PORT);
-  });
+mongoose.connect(`${process.env.REACT_APP_API_URL}`).then(() => {
+  console.log(`listening on port ${PORT}`);
+  app.listen(PORT);
+});
