@@ -1,0 +1,34 @@
+.count {
+  color: purple;
+  font-size: 2rem;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  background-color: #c4c3c3b9;
+}
+
+.flashcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.flashcards li {
+  list-style: none;
+  border: 1px solid rgb(7, 90, 90);
+  height: 250px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
