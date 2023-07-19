@@ -25,6 +25,13 @@ function App() {
     fetchFlashcards();
   };
 
+  const handleDelete = async (flashcardId) => {
+    await fetch(`http://localhost:5000/flashcard/${flashcardId}`, {
+      method: "DELETE",
+    });
+    fetchFlashcards();
+  };
+
   useEffect(() => {
     fetchFlashcards();
   }, []);
@@ -40,7 +47,16 @@ function App() {
       </header>
       <div className="flashcards">
         {flashcards.map((flashcard) => (
-          <li key={flashcard._id}>{flashcard.title}</li>
+          <li key={flashcard._id}>
+            <button
+              onClick={() => {
+                handleDelete(flashcard._id);
+              }}
+            >
+              X
+            </button>
+            {flashcard.title}
+          </li>
         ))}
       </div>
       <form onSubmit={handleSubmit}>
