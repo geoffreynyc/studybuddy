@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   const [flashcards, setFlashcards] = useState([]);
   const [title, setTitle] = useState("");
 
+  // FETCH CARDS
   const fetchFlashcards = async () => {
     const response = await fetch("http://localhost:5000/flashcard");
     const newFlashcards = await response.json();
     setFlashcards(newFlashcards);
   };
 
+  // POST CARDS TO API
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetch("http://localhost:5000/flashcard", {
@@ -24,7 +27,7 @@ function App() {
     setTitle("");
     fetchFlashcards();
   };
-
+  // DELETE CARDS
   const handleDelete = async (flashcardId) => {
     await fetch(`http://localhost:5000/flashcard/${flashcardId}`, {
       method: "DELETE",
@@ -32,10 +35,11 @@ function App() {
     fetchFlashcards();
   };
 
+  // FETCH ON INITIAL PAGE LOAD
   useEffect(() => {
     fetchFlashcards();
   }, []);
-
+  // RECEIVE USER INPUT
   const handleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -55,7 +59,7 @@ function App() {
             >
               X
             </button>
-            {flashcard.title}
+            <Link to={`flashcard/${flashcard._id}`}>{flashcard.title}</Link>
           </li>
         ))}
       </div>

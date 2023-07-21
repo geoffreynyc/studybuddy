@@ -12,12 +12,13 @@ form {
 
 body {
   background-color: #c4c3c3b9;
+  margin-right: 4rem;
+  margin-left: 4rem;
 }
 
 .flashcards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0.5rem;
 }
 
 .flashcards li {
@@ -31,4 +32,21 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  width: 80%;
+  position: relative;
+}
+
+li button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: transform 0.1s ease;
+}
+
+li button:hover {
+  transform: scale(1.3);
 }
