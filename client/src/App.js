@@ -27,8 +27,8 @@ function App() {
     setTitle("");
     fetchFlashcards();
   };
-  // DELETE CARDS
-  const handleDelete = async (flashcardId) => {
+  // DELETE FLASHCARD
+  const handleDeleteFlashcard = async (flashcardId) => {
     await fetch(`http://localhost:5000/flashcards/${flashcardId}`, {
       method: "DELETE",
     });
@@ -54,7 +54,7 @@ function App() {
           <li key={flashcard._id}>
             <button
               onClick={() => {
-                handleDelete(flashcard._id);
+                handleDeleteFlashcard(flashcard._id);
               }}
             >
               X

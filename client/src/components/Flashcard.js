@@ -48,13 +48,27 @@ function Flashcard() {
     setText("");
   };
 
-  // DELETE CARDS
-  // const handleDelete = async (flashcardId) => {
-  //   await fetch(`http://localhost:5000/flashcards/${flashcardId}`, {
-  //     method: "DELETE",
-  //   });
-  //   fetchFlashcards();
-  // };
+  // DELETE CARD
+  const handleDeleteCard = async (index) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/flashcards/${flashcardId}/cards/${index}`,
+        { method: "DELETE" }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete card.");
+      }
+
+      // Update the cards state by filtering out the deleted card
+      setCards((prevCards) =>
+        prevCards.filter((_, cardIndex) => cardIndex !== index)
+      );
+    } catch (error) {
+      console.error("Error deleting card:", error);
+      // Handle the error, e.g., display an error message to the user.
+    }
+  };
 
   // RECEIVE USER INPUT
   const handleChange = (e) => {
@@ -63,16 +77,17 @@ function Flashcard() {
 
   return (
     <div>
+      <h1>{newFlashcard.title}</h1>
       <div className="flashcards">
-        {cards.map((card) => (
-          <li key={card}>
-            {/* <button
+        {cards.map((card, index) => (
+          <li key={index}>
+            <button
               onClick={() => {
-                handleDelete(flashcard._id);
+                handleDeleteCard(index);
               }}
             >
               X
-            </button> */}
+            </button>
             {card}
           </li>
         ))}
