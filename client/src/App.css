@@ -50,3 +50,8 @@ li button {
 li button:hover {
   transform: scale(1.3);
 }
+
+.link {
+  all: unset;
+  cursor: pointer;
+}

@@ -7,7 +7,7 @@ function App() {
 
   // FETCH CARDS
   const fetchFlashcards = async () => {
-    const response = await fetch("http://localhost:5000/flashcard");
+    const response = await fetch("http://localhost:5000/flashcards");
     const newFlashcards = await response.json();
     setFlashcards(newFlashcards);
   };
@@ -15,7 +15,7 @@ function App() {
   // POST CARDS TO API
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/flashcard", {
+    await fetch("http://localhost:5000/flashcards", {
       method: "POST",
       body: JSON.stringify({
         title,
@@ -29,7 +29,7 @@ function App() {
   };
   // DELETE CARDS
   const handleDelete = async (flashcardId) => {
-    await fetch(`http://localhost:5000/flashcard/${flashcardId}`, {
+    await fetch(`http://localhost:5000/flashcards/${flashcardId}`, {
       method: "DELETE",
     });
     fetchFlashcards();
@@ -59,12 +59,14 @@ function App() {
             >
               X
             </button>
-            <Link to={`flashcard/${flashcard._id}`}>{flashcard.title}</Link>
+            <Link className="link" to={`flashcards/${flashcard._id}`}>
+              {flashcard.title}
+            </Link>
           </li>
         ))}
       </div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="card">Card title</label>
+        <label htmlFor="card">Topic</label>
         <input
           value={title}
           onChange={handleChange}

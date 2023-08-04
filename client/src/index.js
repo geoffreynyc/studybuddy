@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/flashcard/:flashcardId",
+    path: "/flashcards/:flashcardId",
     element: <Flashcard />,
   },
 ]);

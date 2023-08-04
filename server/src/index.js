@@ -13,12 +13,13 @@ app.use(
   })
 );
 app.use(express.json());
-app.get("/flashcard", async (req, res) => {
-  const flashcards = await Flashcard.find();
-  res.json(flashcards);
+
+app.get("/flashcards", async (req, res) => {
+  const flashcard = await Flashcard.find();
+  res.json(flashcard);
 });
 
-app.post("/flashcard", async (req, res) => {
+app.post("/flashcards", async (req, res) => {
   const newFlashcard = new Flashcard({
     title: req.body.title,
   });
@@ -26,7 +27,22 @@ app.post("/flashcard", async (req, res) => {
   res.json(createdFlashcard);
 });
 
-app.delete("/flashcard/:flashcardId", async (req, res) => {
+app.get("/flashcards/:flashcardId", async (req, res) => {
+  const { flashcardId } = req.params;
+  const flashcard = await Flashcard.findById(flashcardId);
+  res.json(flashcard);
+});
+
+app.post("/flashcards/:flashcardId/cards", async (req, res) => {
+  const flashcardId = req.params.flashcardId;
+  const flashcard = await Flashcard.findById(flashcardId);
+  const { text } = req.body;
+  flashcard.cards.push(text);
+  await flashcard.save();
+  res.json(flashcard);
+});
+
+app.delete("/flashcards/:flashcardId", async (req, res) => {
   const flashcardId = req.params.flashcardId;
   const flashcard = await Flashcard.findByIdAndDelete(flashcardId);
   res.json(flashcard);
