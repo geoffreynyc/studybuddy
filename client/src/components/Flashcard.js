@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Flashcard() {
   const [newFlashcard, setFlashcard] = useState({});
   const [cards, setCards] = useState([]);
@@ -77,6 +78,7 @@ function Flashcard() {
 
   return (
     <div>
+      <Link to="/">StudyBuddy</Link>
       <h1>{newFlashcard.title}</h1>
       <div className="flashcards">
         {cards.map((card, index) => (
