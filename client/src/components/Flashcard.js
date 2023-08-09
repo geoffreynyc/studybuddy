@@ -78,8 +78,10 @@ function Flashcard() {
 
   return (
     <div>
-      <Link to="/">StudyBuddy</Link>
-      <h1>{newFlashcard.title}</h1>
+      <Link className="home-link" to="/">
+        StudyBuddy
+      </Link>
+      <h1 className="deck-title">{newFlashcard.title}</h1>
       <div className="flashcards">
         {cards.map((card, index) => (
           <li key={index}>

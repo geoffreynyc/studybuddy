@@ -13,6 +13,7 @@ app.use(
   })
 );
 app.use(express.json());
+
 // RETURNS ALL FLASHCARDS FROM DB
 app.get("/flashcards", async (req, res) => {
   const flashcard = await Flashcard.find();

@@ -47,7 +47,9 @@ function App() {
   return (
     <div>
       <header>
-        <h1>StudyBuddy</h1>
+        <Link className="home-link" to="/">
+          StudyBuddy
+        </Link>
       </header>
       <div className="flashcards">
         {flashcards.map((flashcard) => (
@@ -59,7 +61,7 @@ function App() {
             >
               X
             </button>
-            <Link className="link" to={`flashcards/${flashcard._id}`}>
+            <Link className="link" to={`/flashcards/${flashcard._id}`}>
               {flashcard.title}
             </Link>
           </li>

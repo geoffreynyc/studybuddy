@@ -1,6 +1,11 @@
-.count {
-  color: purple;
-  font-size: 2rem;
+/* font-family: "Lato", sans-serif;
+font-family: "Playfair Display", serif; */
+
+body {
+  background-color: #f0eff1;
+  margin-right: 4rem;
+  margin-left: 4rem;
+  font-family: "Playfair Display", serif;
 }
 
 form {
@@ -8,12 +13,6 @@ form {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-body {
-  background-color: #c4c3c3b9;
-  margin-right: 4rem;
-  margin-left: 4rem;
 }
 
 .flashcards {
@@ -54,4 +53,16 @@ li button:hover {
 .link {
   all: unset;
   cursor: pointer;
+}
+
+.home-link {
+  all: unset;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: bolder;
+  letter-spacing: 0.2px;
+}
+
+.deck-title {
+  font-weight: 400;
 }
